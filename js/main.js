@@ -15,3 +15,27 @@ function textLength(string, maxLength) {
   return string.length <= maxLength;
 }
 textLength('HtmlAcademy', 20);
+
+const likesAmount = {
+  min: 15,
+  max: 200,
+};
+const commentsAmount = {
+  min: 0,
+  max: 200,
+};
+const pictureNumber = 25;
+const pictureInfo = function (index) {
+  return {
+    id: index,
+    url: `photos/${index}.jpg`,
+    description: 'Отправлено через Кекстаграм',
+    likes: getRandomIntInclusive(likesAmount.min, likesAmount.max),
+    comments: getRandomIntInclusive(commentsAmount.min, commentsAmount.max),
+  };
+};
+
+const createPicture = Array.from({ length: pictureNumber }, (_, infoIndex) => pictureInfo(infoIndex + 1));
+
+createPicture();
+
