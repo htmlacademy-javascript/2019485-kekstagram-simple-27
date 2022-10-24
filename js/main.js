@@ -1,4 +1,4 @@
-import { CREATE_PICTURE } from './data.js';
+import './picture-creation.js';
 
 // eslint-disable-next-line no-console
-console.log(CREATE_PICTURE);
+
