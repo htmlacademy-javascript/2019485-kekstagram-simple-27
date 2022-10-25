@@ -4,7 +4,7 @@ const pictureList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const pictureListFragment = document.createDocumentFragment();
 
-const GET_PICTURE = CREATE_PICTURE;
+const GET_PICTURE = CREATE_PICTURE();
 
 GET_PICTURE.forEach((post) => {
   const picture = pictureTemplate.cloneNode(true);
