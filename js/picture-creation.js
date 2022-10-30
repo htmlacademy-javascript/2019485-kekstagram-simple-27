@@ -1,12 +1,12 @@
-import { CREATE_PICTURE } from './data.js';
+import { createPicture } from './data.js';
 
 const pictureList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const pictureListFragment = document.createDocumentFragment();
 
-const GET_PICTURE = CREATE_PICTURE();
+const pictures = createPicture();
 
-GET_PICTURE.forEach((post) => {
+pictures.forEach((post) => {
   const picture = pictureTemplate.cloneNode(true);
   picture.querySelector('.picture__img').src = post.url;
   picture.querySelector('.picture__likes').textContent = post.likes;
@@ -15,4 +15,3 @@ GET_PICTURE.forEach((post) => {
 });
 
 pictureList.appendChild(pictureListFragment);
-

@@ -11,6 +11,6 @@ const pictureInfo = function (index) {
   };
 };
 
-const CREATE_PICTURE = () => Array.from({ length: PICTURE_NUMBER }, (_, infoIndex) => pictureInfo(infoIndex + 1));
+const createPicture = () => Array.from({ length: PICTURE_NUMBER }, (_, infoIndex) => pictureInfo(infoIndex + 1));
 
-export { CREATE_PICTURE };
+export { createPicture };
