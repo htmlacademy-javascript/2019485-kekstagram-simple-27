@@ -82,7 +82,7 @@ const onFormChange = (evt) => {
 
 const onSliderUpdate = () => {
   currentImage.style.filter = 'none';
-  currentImage.className = '';
+  currentImage.className = 'img-upload__preview';
   effectLevel.value = '';
   if (isDefault()) {
     return;
