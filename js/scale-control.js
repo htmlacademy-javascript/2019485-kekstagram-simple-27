@@ -33,6 +33,8 @@ const onScaleBiggerClick = () => {
 
 scaleImage();
 
+
 scaleSmaller.addEventListener('click', onScaleSmallerClick);
 scaleBigger.addEventListener('click', onScaleBiggerClick);
 
+export { scaleImage };
