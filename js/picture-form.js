@@ -78,5 +78,4 @@ const setUserFormSubmit = (onSuccess) => {
     }
   });
 };
-setUserFormSubmit(closeUserModal);
-export { resetComment };
+export { resetComment, setUserFormSubmit, closeUserModal };
