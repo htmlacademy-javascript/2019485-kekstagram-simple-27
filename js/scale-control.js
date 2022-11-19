@@ -2,7 +2,6 @@ const scaleControl = document.querySelector('.scale__control--value');
 const scaleSmaller = document.querySelector('.scale__control--smaller');
 const scaleBigger = document.querySelector('.scale__control--bigger');
 const currentImage = document.querySelector('.img-upload__preview');
-
 const DEFAULT_SCALE = 100;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
@@ -36,3 +35,4 @@ scaleImage();
 scaleSmaller.addEventListener('click', onScaleSmallerClick);
 scaleBigger.addEventListener('click', onScaleBiggerClick);
 
+export { scaleImage };
