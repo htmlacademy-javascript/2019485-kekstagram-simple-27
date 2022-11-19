@@ -5,7 +5,6 @@ import './picture-effect.js';
 import './status-message.js';
 import { getData } from './api.js';
 
-
 getData();
 
 

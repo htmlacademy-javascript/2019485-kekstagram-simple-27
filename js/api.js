@@ -11,6 +11,7 @@ const getData = () => {
       showAlert('Не удалось загрузить фотографии пользователей.');
     });
 };
+
 const sendData = (onSuccess, onFail, body) => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple',
     {
@@ -29,6 +30,5 @@ const sendData = (onSuccess, onFail, body) => {
       onFail();
     });
 };
-
 
 export { getData, sendData };

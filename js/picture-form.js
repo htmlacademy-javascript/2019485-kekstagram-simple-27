@@ -3,8 +3,6 @@ import { showSuccessMessage, showErrorMessage } from './status-message.js';
 import { scaleImage } from './scale-control.js';
 import { resetEffects } from './picture-effect.js';
 import { resetComment } from './util.js';
-
-
 const form = document.querySelector('.img-upload__form');
 const formInput = document.querySelector('#upload-file');
 const openFormModalElement = document.querySelector('.img-upload__overlay');
@@ -37,6 +35,7 @@ document.addEventListener('keydown', (evt) => {
     openFormModalElement.classList.add('hidden');
   }
 });
+
 //Блокировка кнопки отправки
 const blockSubmitButton = () => {
   submitButton.disabled = true;
@@ -46,7 +45,6 @@ const blockSubmitButton = () => {
 const unblockSubmitButton = () => {
   submitButton.disabled = false;
   submitButton.textContent = 'Сохранить';
-
 };
 
 //Валидация комментария в форме
@@ -78,4 +76,7 @@ const setUserFormSubmit = (onSuccess) => {
     }
   });
 };
-export { resetComment, setUserFormSubmit, closeUserModal };
+
+setUserFormSubmit(closeUserModal);
+
+export { resetComment };

@@ -4,14 +4,10 @@ import { resetComment } from './picture-form.js';
 const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
 const mainPage = document.querySelector('body');
 const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
-
-
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
-
 
 const onOverlayClick = () => {
   hideMessage();
-
 };
 
 const onMessageEscKeydown = (evt) => {
@@ -19,9 +15,7 @@ const onMessageEscKeydown = (evt) => {
     evt.preventDefault();
     hideMessage();
   }
-
 };
-
 
 const showSuccessMessage = () => {
   const successPopup = successMessageTemplate.cloneNode(true);
@@ -40,7 +34,6 @@ const showErrorMessage = () => {
   document.addEventListener('click', onOverlayClick);
   mainPage.appendChild(errorPopup);
   mainPage.style.overflow = 'hidden';
-
 };
 
 function hideMessage() {

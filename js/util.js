@@ -1,4 +1,5 @@
 const commentField = document.querySelector('.text__description');
+
 //Функция, возвращающая случайное целое число из переданного диапазона включительно.
 //https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomIntInclusive(min, max) {
@@ -16,6 +17,7 @@ function textLength(string, maxLength) {
   return string.length <= maxLength;
 }
 textLength('HtmlAcademy', 20);
+
 //Вывод ошибки при ошибке загрузки фотографий пользователей
 const ALERT_SHOW_TIME = 5000;
 const showAlert = (message) => {
@@ -35,6 +37,7 @@ const showAlert = (message) => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
 };
+
 function resetComment() {
   commentField.value = '';
 }
