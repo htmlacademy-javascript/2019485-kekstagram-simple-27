@@ -2,38 +2,56 @@ import { sendData } from './api.js';
 import { showSuccessMessage, showErrorMessage } from './status-message.js';
 import { scaleImage } from './scale-control.js';
 import { resetEffects } from './picture-effect.js';
-import { resetComment } from './util.js';
+import { resetComment, isEscEvent } from './util.js';
 const form = document.querySelector('.img-upload__form');
 const formInput = document.querySelector('#upload-file');
-const openFormModalElement = document.querySelector('.img-upload__overlay');
-const closeFormModalElement = document.querySelector('#upload-cancel');
+const openFormModal = document.querySelector('.img-upload__overlay');
+const closeFormModal = document.querySelector('#upload-cancel');
 const mainPage = document.querySelector('body');
 const submitButton = document.querySelector('.img-upload__submit');
 
 
+const pristine = new Pristine(form, {
+  classTo: 'img-upload__text',
+  errorTextParent: 'img-upload__text',
+  errorTextClass: 'text__description--text',
+});
+
+const onEscKeydown = (evt) => {
+  if (isEscEvent(evt)) {
+    evt.preventDefault();
+    openFormModal.classList.add('hidden');
+    formInput.value = '';
+  }
+};
+
+function removeEscKeydown() {
+  document.removeEventListener('keydown', onEscKeydown);
+}
+
+function addEscKeydown() {
+  document.addEventListener('keydown', onEscKeydown);
+}
+
 //Открытие формы при загрузке файла
 formInput.addEventListener('change', () => {
-  openFormModalElement.classList.remove('hidden');
+  openFormModal.classList.remove('hidden');
   mainPage.classList.add('modal-open');
+  document.addEventListener('keydown', onEscKeydown);
   scaleImage();
   resetEffects();
+  pristine.reset();
 });
 
 //Закрытие формы
 function closeUserModal() {
-  openFormModalElement.classList.add('hidden');
+  openFormModal.classList.add('hidden');
+  formInput.value = '';
 }
 
-closeFormModalElement.addEventListener('click', () => {
-  openFormModalElement.classList.add('hidden');
+closeFormModal.addEventListener('click', () => {
+  openFormModal.classList.add('hidden');
   mainPage.classList.remove('modal-open');
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    evt.preventDefault();
-    openFormModalElement.classList.add('hidden');
-  }
 });
 
 //Блокировка кнопки отправки
@@ -48,15 +66,10 @@ const unblockSubmitButton = () => {
 };
 
 //Валидация комментария в форме
-const pristine = new Pristine(form, {
-  classTo: 'img-upload__text',
-  errorTextParent: 'img-upload__text',
-  errorTextClass: 'text__description--text',
-});
-
 const setUserFormSubmit = (onSuccess) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
+    removeEscKeydown();
 
     const isValid = pristine.validate();
     if (isValid) {
@@ -79,4 +92,4 @@ const setUserFormSubmit = (onSuccess) => {
 
 setUserFormSubmit(closeUserModal);
 
-export { resetComment };
+export { resetComment, addEscKeydown };

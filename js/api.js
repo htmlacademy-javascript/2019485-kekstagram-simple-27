@@ -1,8 +1,9 @@
 import { renderPictures } from './picture-creation.js';
 import { showAlert } from './util.js';
-
+const GET_IRL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
+const POST_IRL = 'https://27.javascript.pages.academy/kektagram-simple';
 const getData = () => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch(GET_IRL)
     .then((response) => response.json())
     .then((pictures) => {
       renderPictures(pictures);
@@ -13,7 +14,7 @@ const getData = () => {
 };
 
 const sendData = (onSuccess, onFail, body) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple',
+  fetch(POST_IRL,
     {
       method: 'POST',
       body,

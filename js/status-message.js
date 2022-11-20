@@ -1,13 +1,18 @@
 import { scaleImage } from './scale-control.js';
 import { resetEffects } from './picture-effect.js';
 import { resetComment } from './picture-form.js';
+import { isEscEvent } from './util.js';
+import { addEscKeydown } from './picture-form.js';
 const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
 const mainPage = document.querySelector('body');
 const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
-const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
-const onOverlayClick = () => {
-  hideMessage();
+const onOverlayClick = (evt) => {
+  const divElement = evt.target.closest('div');
+  const buttonElement = evt.target.closest('button');
+  if (!divElement || buttonElement) {
+    hideMessage();
+  }
 };
 
 const onMessageEscKeydown = (evt) => {
@@ -42,6 +47,7 @@ function hideMessage() {
   document.removeEventListener('keydown', onMessageEscKeydown);
   document.removeEventListener('click', onOverlayClick);
   mainPage.style.overflow = 'auto';
+  addEscKeydown();
 }
 
 export { showSuccessMessage, showErrorMessage };
