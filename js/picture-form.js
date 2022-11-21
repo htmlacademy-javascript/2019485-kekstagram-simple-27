@@ -37,9 +37,10 @@ function addEscKeydown() {
 formInput.addEventListener('change', () => {
   openFormModal.classList.remove('hidden');
   mainPage.classList.add('modal-open');
-  document.addEventListener('keydown', onEscKeydown);
+  addEscKeydown();
   scaleImage();
   resetEffects();
+  resetComment();
   pristine.reset();
 });
 
@@ -57,12 +58,12 @@ closeFormModal.addEventListener('click', () => {
 //Блокировка кнопки отправки
 const blockSubmitButton = () => {
   submitButton.disabled = true;
-  submitButton.textContent = 'Сохраняю...';
+  submitButton.textContent = 'Опубликовываю...';
 };
 
 const unblockSubmitButton = () => {
   submitButton.disabled = false;
-  submitButton.textContent = 'Сохранить';
+  submitButton.textContent = 'Опубликовать';
 };
 
 //Валидация комментария в форме
